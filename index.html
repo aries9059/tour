@@ -1,0 +1,1040 @@
+<html>
+<title>台服#巡演#用鑽計算器</title>
+<META http-equiv="Content-Type"  content="text/html; charset=utf-8" >
+<META name="viewport"  content="width=device-width, initial-scale=1">
+<style>
+html{
+	font-family: "Microsoft soft","Times";
+	line-height: 1.2;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-ms-overflow-style: scrollbar;
+	-webkit-input-placeholder ;
+	height : 1000px;
+	
+}
+
+body {
+    background-color: lightblue	;
+}
+
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: steelblue	;
+    background-clip: border-box;
+    border-radius: 0.5rem;
+	align-items: center;
+	width: auto;
+	height: auto;
+	
+}
+
+
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: steelblue	;
+	font-size: 2rem;
+	font-weight : bold;
+	height: auto;
+
+}
+
+
+.blocks {
+    display: grid;
+    grid-gap: 0;
+	background: steelblue;
+	width: auto;
+	font-size: 1.5rem;
+	color: yellow;
+
+	
+}
+
+.setting-block {
+	padding : 1rem;
+	width: auto;
+	height: auto;
+    display: flex;
+    flex-direction: column-reversed ;
+	background:lightblue;
+	justify-content: center;	
+	align-items: self; 
+	font-size: 1.75rem;
+	color:midnightblue;
+}
+
+.show-block {
+	padding : 1rem;
+	width: auto;
+	height: auto;
+    display: flex;
+    flex-direction: column-reversed ;
+	background:lightblue;
+	justify-content: center;	
+	align-items: self; 
+	color:midnightblue;
+	font-size: 1.75rem;
+	text-align:left;
+}
+	
+select{
+	font-family: "Microsoft soft","Times";
+	font-size: 1.75rem;
+	height: 2.2rem;
+	color:midnightblue;
+	background:aliceblue;
+	text-align:center;
+}
+
+form{
+	font-family: "Microsoft soft","Times";
+	height: 2rem;
+	color:midnightblue;
+	text-align:center;
+}
+	
+input{
+	height: 2.2rem;
+	padding: 0.1rem 0.2rem;
+	font-size: 1.75rem;
+	font-family: "Microsoft soft", "Times";
+	font-color:midnightblue;
+	background:aliceblue; 
+	border-style:solid;
+	border-width: 0.1rem;
+	border-radius: 0.1rem;
+	autocomplete: off;
+	text-align:center;
+	position: center;
+	color:midnightblue;
+	
+}
+
+.button
+{   color:midnightblue;
+	height: 3rem;
+	width: 7rem;
+	font-size: 1.5rem;
+	background-color:lightblue;
+	border: none;
+}
+
+
+@media only screen and (max-device-width: 600px) {
+
+body {
+    background-color: steelblue	;
+}
+
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: steelblue	;
+    background-clip: border-box;
+	align-items: center;
+	width: auto;
+	height: auto;
+	
+}
+
+.card-header {
+    padding: 0rem 0rem;
+    margin-bottom: 0;
+    background-color: steelblue	;
+	font-size: 1rem;
+	font-weight : bold;
+}
+
+.blocks {
+    display: grid;
+    grid-gap: 0;
+	background: steelblue;
+	width: auto;
+	font-size: 0.9rem;
+	color: yellow;
+	
+}
+
+.setting-block {
+	padding : 0.25rem;
+	width: auto;
+	height: auto;
+    display: flex;
+    flex-direction: column-reversed ;
+	background:lightblue;
+	justify-content: center;	
+	align-items: self; 
+	font-size: 1rem;
+	color:midnightblue;
+	
+}
+
+.show-block {
+	padding : 0.25rem;
+	width: auto;
+	height: auto;
+    display: flex;
+    flex-direction: column-reversed ;
+	background:lightblue;
+	justify-content: center;	
+	align-items: self; 
+	color:midnightblue;
+	font-size: 1rem;
+}
+
+
+select{
+	font-family: "Microsoft soft","Times";
+	font-size: 1rem;
+	height: 1.5rem;
+	color:midnightblue;
+	background:aliceblue;
+	text-align:center
+}
+
+form{
+	font-family: "Microsoft soft","Times";
+	/height: 1.5rem;
+	color:midnightblue;
+	text-align:center;
+}
+	
+input{
+	height: 1.5rem;
+	padding: 0.1rem 0.2rem;
+	font-size: 1rem;
+	font-family: "Microsoft soft", "Times";
+	font-color:midnightblue;
+	background:aliceblue; 
+	border-style:solid;
+	border-width: 0.1rem;
+	border-radius: 0.1rem;
+	autocomplete: off;
+	text-align:center;
+	position: center;
+	color:midnightblue;	
+}
+
+.button{ 
+	color:midnightblue;
+	height: 3rem;
+	width: 7rem;
+	font-size: 1.5rem;
+	background-color:lightblue;
+	border: none;
+}
+
+}
+
+
+</style>
+
+<script>
+function run_all(){
+	const giftElement = document.getElementById("gift");
+	const gift = giftElement.value;
+	const date_endElement = document.getElementById("date_end");
+	const date_end = date_endElement.value;
+	const pt_nowElement = document.getElementById("pt_now");
+	const pt_now = pt_nowElement.value;	
+	const pt_targetElement = document.getElementById("pt_target");
+	const pt_target = pt_targetElement.value;	
+	const score_threeElement = document.getElementById("score_three");
+	const score_three  = score_threeElement.value;	
+	const score_fourElement = document.getElementById("score_four");
+	const score_four = score_fourElement.value;
+	const bp_use_3Element = document.getElementById("bp_use_3");
+	const bp_use_3 = bp_use_3Element.value;  
+	const bp_use_4Element = document.getElementById("bp_use_4");
+	const bp_use_4  = bp_use_4Element.value; 
+	const feverElement = document.getElementById("fever");
+	const fever = feverElement.value;  
+	const addElement = document.getElementById("add");
+	const add = addElement.value;  
+	const level_nowElement = document.getElementById("level_now");
+	const level_now  = level_nowElement.value;  
+	const exp_needElement = document.getElementById("exp_need");
+	const exp_need = exp_needElement.value;    
+	const bp_nowElement = document.getElementById("bp_now");
+	const bp_now = bp_nowElement.value;  
+	const loudspeaker_nowElement = document.getElementById("loudspeaker_now");
+	const loudspeaker_now  = loudspeaker_nowElement.value;
+	const whistle_nowElement = document.getElementById("whistle_now");
+	const whistle_now  = whistle_nowElement.value;
+	const double_nowElement = document.getElementById("double_now");
+	const double_now = double_nowElement.value;
+	const work_nowElement = document.getElementById("work_now");
+	const work_now = work_nowElement.value;
+	const work_maxElement = document.getElementById("work_max");
+	const work_max = work_maxElement.value;
+	const work_timeElement = document.getElementById("work_time");
+	const work_time = work_timeElement.value;
+	const work_eventElement = document.getElementById("work_event");
+	const work_event = work_eventElement.value;
+	const bp_wasteElement = document.getElementById("bp_waste");
+	const bp_waste = bp_wasteElement.value;
+	const work_wasteElement = document.getElementById("work_waste");
+	const work_waste = work_wasteElement.value;
+	const stage_completeElement = document.getElementById("stage_complete");
+	const stage_complete = stage_completeElement.value;
+	const month_bigElement = document.getElementById("month_big");
+	const month_big = month_bigElement.value;
+	const day_missionElement = document.getElementById("day_mission");
+	const day_mission= day_missionElement.value;
+	const day_drawElement = document.getElementById("day_draw");
+	const day_draw= day_drawElement.value;
+	const abilityElement = document.getElementById("ability");
+	const ability= abilityElement.value;
+	
+	/*計算時間*/
+	const time_now = Date.now();
+	const time_end = Date.parse(date_end);
+	const time_left_hour = Math.floor((time_end - time_now)/3600000);
+	const time_left_min = Math.floor((time_end - time_now)/60000);	
+
+	/*判斷活動時長*/
+	var show_time_min ;
+	if ( time_left_min > 202*60){
+		show_time_min = 202*60;
+	}else{
+		show_time_min = time_left_min;
+	}
+	var show_time_hour = show_time_min/60;
+	var show_hour = Math.floor(show_time_hour);
+	var show_min = Math.floor(show_time_min % 60);
+	
+	
+	/*剩餘天數*/
+	var day_left  = Math.ceil((show_time_min-60*22)/(60*24));
+	
+	
+	/*自回bp&work計算*/
+	var bp_recovory = Math.ceil(show_time_min/30)-(bp_waste*day_left);
+	var work_recovory = Math.ceil(show_time_min/work_time)-(work_waste*day_left);
+	
+
+	/*判斷 work pt*/
+	var work_pt;
+	if (work_event == 1 ){
+		work_pt = 375;
+	}else{
+		work_pt = 250;
+	}
+	
+	
+	/*道具*/
+	/*大月卡*/
+	var whistle_package;
+	var double_package;
+	if (month_big == 1 ){
+		whistle_package = day_left*5;
+		double_package = day_left*5;
+	}
+	else{
+		whistle_package = 0;
+		double_package = 0;
+	}
+	
+	
+	/*whitstle_pt 預計拿*/
+	var whitstle_pt;
+	if (pt_target < 6000) {
+		whitstle_pt = 0 ;
+	}
+	else if (pt_target < 40000){
+		whitstle_pt = 3;
+	}
+	else if (pt_target < 90000){
+		whitstle_pt = 6;
+	}
+	else if (pt_target < 140000){
+		whitstle_pt = 9;
+	}
+	else if (pt_target < 260000){
+		whitstle_pt = 12;
+	}
+	else if (pt_target < 360000){
+		whitstle_pt = 15;
+	}
+	else if (pt_target < 420000){
+		whitstle_pt = 20;
+	}
+	else if (pt_target < 540000){
+		whitstle_pt = 25;
+	}
+	else {    
+		whitstle_pt = 30;
+	}
+	
+
+	/*whitstle_pt 已經拿*/
+	if (pt_now < 6000) {
+		whitstle_pt = whitstle_pt - 0 ;
+	}
+	else if (pt_now < 40000){
+		whitstle_pt = whitstle_pt - 3 ;
+	}
+	else if (pt_now < 90000){
+		whitstle_pt = whitstle_pt - 6 ;
+	}
+	else if (pt_now < 140000){
+		whitstle_pt = whitstle_pt - 9;
+	}
+	else if (pt_now < 260000){
+		whitstle_pt = whitstle_pt - 12;
+	}
+	else if (pt_now < 360000){
+		whitstle_pt = whitstle_pt - 15;
+	}
+	else if (pt_now < 420000){
+		whitstle_pt = whitstle_pt - 20;
+	}
+	else if (pt_now < 540000){
+		whitstle_pt = whitstle_pt - 25;
+	}
+	else {    
+		whitstle_pt = whitstle_pt - 30;
+	}
+	
+	
+	/*day_draw*/
+	var whitstle_draw;
+	if(day_draw == 1){
+		whitstle_draw = day_left*3;
+	}
+	else{
+		whitstle_draw = 0;
+	}
+	
+	
+	/*loudspeaker_pt*/
+	var loudspeaker_pt;
+	if (pt_target < 1050000){
+		loudspeaker_pt = 0;
+	}
+	else if (pt_target < 2550000){
+		loudspeaker_pt = 1;
+	}
+	else if (pt_target < 3000000){
+		loudspeaker_pt = 2;
+	}
+	else{
+		loudspeaker_pt = 3;
+	}
+
+	if (pt_now < 1050000){
+		loudspeaker_pt = loudspeaker_pt - 0;
+	}
+	else if (pt_now < 2550000){
+		loudspeaker_pt = loudspeaker_pt - 1;
+	}
+	else if (pt_now < 3000000){
+		loudspeaker_pt = loudspeaker_pt - 2;
+	}
+	else {
+		loudspeaker_pt = loudspeaker_pt - 3;
+	}
+	
+	
+	/*登入獎勵*/
+	var whistle_gift = 0;
+
+	if (day_left < 1 ){
+		whistle_gift = 0;
+	}
+	else if (day_left < 2 ){
+		whistle_gift = 3;
+	}
+	else if (day_left < 3 ){
+		whistle_gift = 6;
+	}
+	else if (day_left < 4 ){
+		whistle_gift = 9;
+	}
+	else if (day_left < 5 ){
+		whistle_gift = 12;
+	}
+	else if (day_left < 6 ){
+		whistle_gift = 15;
+	}
+	else if (day_left < 7 ){
+		whistle_gift = 18;
+	}
+	else if (day_left < 8 ){
+		whistle_gift = 21;
+	}
+	else {
+		if(gift == 121){
+			whistle_gift = 121;
+		}else {
+			whistle_gift = 24;
+		}
+	}
+	
+
+	/*daily mission*/
+	var whistle_mission;
+	if (day_mission == 1 ){
+		whistle_mission = day_left * 2;		
+	}
+	else{
+		whistle_mission = 0;
+	}
+	
+
+	
+	/*星光次數*/
+	var stage_event;
+	if (stage_complete == 1){
+		stage_event = day_left*3;
+	}
+	else{
+		stage_event = 0;	
+	}
+	
+
+	var time_stage;
+	if (stage_complete == 1){
+		time_stage = (9-day_left)*3;
+	}
+	else{
+		time_stage = 0;	
+	}
+	
+
+	/*days_need to arrive target*/
+	var free_stage_pt;
+	var free_work_pt;
+	var free_double_pt;
+	var score_three_t = Number(score_three);
+	var score_four_t = Number(score_four);
+	var add_t = Number(add);
+	var fever_t = Number(fever);
+	var bp_use_3_t = Number(bp_use_3);
+	var bp_use_4_t = Number(bp_use_4);
+	var work_now_t = Number(work_now);
+	var double_now_t = Number(double_now);
+	var double_package_t = Number(double_package);
+	var days_need = 0;
+	var three_song_pt;
+	var four_song_pt;
+	var one_days_pt;
+	var pt_target_t = Number(pt_target);
+	
+	free_stage_pt = 5000*( time_stage + stage_event);
+	free_work_pt = work_pt*(work_now_t + work_recovory);
+	free_double_pt = Math.floor(Math.floor(2500+(score_three_t/5000))*(1+add_t/100))*bp_use_3_t*Math.floor((double_now_t + double_package_t)/bp_use_3_t);
+	three_song_pt = 3*Math.floor(Math.floor(2500+(score_three_t/5000))*(1+add_t/100))*bp_use_3_t;
+	four_song_pt = Math.floor(Math.floor(2250+(score_four_t/5000))*(1+add_t/100)*(1+fever/100))*bp_use_4_t;
+	one_days_pt = three_song_pt + four_song_pt;
+	days_need = Math.ceil((pt_target_t - free_stage_pt - free_work_pt - free_double_pt) / one_days_pt) ;
+
+	
+	/*exp_count*/
+	/**exp_song**/
+	var exp_gain_3 = 0;
+	var exp_gain_4 = 0;
+
+	if (bp_use_3 == 3){
+		exp_gain_3 = 3*200*days_need;
+	} 
+	else if ( bp_use_3 == 6 ){
+		exp_gain_3 = 3*300*days_need;
+	}
+	else {
+		exp_gain_3 = 3*400*days_need;
+	}
+
+	if (bp_use_4 == 3){
+		exp_gain_4 = 200*days_need;
+	} 
+	else if ( bp_use_4 == 6 ){
+		exp_gain_4 = 300*days_need;
+	}
+	else {
+		exp_gain_4 = 400*days_need;
+	}
+
+
+	/**exp_other**/
+
+	var exp_double = 0;
+	if (bp_use_3 == 3){
+		exp_double = 200*Math.floor((double_now_t + double_package_t) / bp_use_3_t);
+	}
+	else if (bp_use_3 == 6){
+		exp_double = 300*Math.floor((double_now_t + double_package_t) / bp_use_3_t);
+	}
+	else {
+		exp_double = 400*Math.floor((double_now_t + double_package_t) / bp_use_3_t);
+	}
+
+	var exp_other;
+	var exp_gain;
+	exp_other = 20*(work_recovory) + exp_double + 20*( time_stage + stage_event );
+	exp_gain = exp_gain_3 + exp_gain_4 + exp_other;
+	//window.alert("exp_gain：" + exp_gain);
+	
+	
+	/**level_up_count**/
+	var level_final = 0;
+	var level_now_t = Number(level_now);
+	var exp_need_t = Number(exp_need);
+	var exp_need_2 = exp_need_t;
+	for (level_final = level_now_t; exp_gain >= exp_need_t; level_final++){
+		exp_gain = exp_gain - exp_need_t;
+		exp_need_t = level_final*100+2500;
+	}
+	var level_up;
+	level_up= level_final - level_now_t;
+	
+	
+	//already use exp//
+	var exp_use_3 = 0;
+	var exp_use_4 = 0;
+	var level_add = 0;
+	var days_pass = 0;
+	var pt_now_t = Number(pt_now);
+	var exp_use = 0;
+	var exp_unused = 0;
+
+	//exp_use_3//
+	if (bp_use_3 == 3){
+		exp_use_3 = 200;
+	} 
+	else if ( bp_use_3 == 6 ){
+		exp_use_3 = 300;
+	}
+	else {
+		exp_use_3 = 400;
+	}
+
+	//exp_use_4//
+	if (bp_use_4 == 3){
+		exp_use_4 = 200;
+	} 
+	else if ( bp_use_4 == 6 ){
+		exp_use_4 = 300;
+	}
+	else {
+		exp_use_4 = 400;
+	}
+	
+	var level_unused = 0;
+	var level_unsed_total = 0;
+	var final_lv = 0;
+	if (pt_now_t >= one_days_pt){
+		days_pass = Math.floor(pt_now_t / one_days_pt);
+		exp_use = exp_use_3*3*days_pass + exp_use_4*days_pass;
+		exp_unused = exp_gain_3 + exp_gain_4 + exp_other - exp_use;
+
+		
+		for (level_unused = level_now_t; exp_unused >= exp_need_2; level_unused++){
+			exp_unused = exp_unused - exp_need_2;
+			exp_need_2 = level_unused*100+2500;
+			level_unsed_total = level_unsed_total + 1;
+		}
+		
+		final_lv = level_now_t + level_unsed_total;
+	}else {
+		final_lv = level_now_t + level_up;
+	
+	}
+	
+	/* free_pt for work(comfirm level up), double */
+	var work_max_t = Number(work_max);
+	free_work_pt = work_pt*(work_now_t + work_recovory + work_max_t * level_unsed_total);
+
+
+	/* free_pt for song */
+	var free_bp;
+	var bp_now_t = Number(bp_now);
+	var free_whistle;
+	var whistle_now_t = Number(whistle_now);
+	var free_loudspeaker;
+	var loudspeaker_now_t = Number(loudspeaker_now);
+	var bp_transfer;
+	
+	free_bp = bp_now_t + bp_recovory + 10*level_unsed_total;
+	free_whistle = whistle_now_t + whistle_gift + whitstle_pt + whistle_package + whitstle_draw + whistle_mission;
+	free_loudspeaker = loudspeaker_now_t + loudspeaker_pt;
+	bp_transfer = free_bp + free_whistle + 10*free_loudspeaker;
+
+
+	/* free day */
+	var free_day = 0;
+	var free_day_remain = 0;
+	var free_day_pt = 0;
+	free_day = Math.floor(bp_transfer/(bp_use_3_t*3 + bp_use_4_t));
+	free_day_remain = bp_transfer % (bp_use_3_t*3 + bp_use_4_t);
+	free_day_pt = free_day*one_days_pt;
+
+
+	/*free_pt_total (confirm need_bp)*/
+	var free_pt_total;
+	var ability_t = Number(ability);
+	var free_ability = ability_t*day_left;
+	free_pt_total = free_day_pt + free_work_pt + free_double_pt + (stage_event*5000) + pt_now_t + free_ability;
+	
+
+	/*count adv_bp need_bp need_dia need_day */
+	var pay_pt;
+	var need_pay;
+	var adv_bp;
+	var need_bp;
+	var pay_dia;
+	pay_pt = pt_target_t - free_pt_total;
+	need_day = days_need - days_pass; 
+	adv_bp = Math.floor( one_days_pt / (bp_use_3_t*3 + bp_use_4_t));
+	need_bp = Math.ceil(pay_pt / adv_bp) - free_day_remain;
+	pay_dia =  need_bp*20;
+
+
+	/*計算結束 */ 			/*歐耶 歐耶 歐耶*/
+
+		
+	var showbox_01 = document.getElementById("showbox_01");
+	showbox_01.innerHTML = "巡演碎鑽計算結果：";
+
+	var showbox_02 = document.getElementById("showbox_02");
+	showbox_02.innerHTML = "剩餘活動時間：" + show_hour + "小時" + show_min + "分鐘";
+	
+	var showbox_03 = document.getElementById("showbox_03");
+	showbox_03.innerHTML = "剩餘自回bp數：" + bp_recovory ;
+	
+	var showbox_04 = document.getElementById("showbox_04");
+	showbox_04.innerHTML = "剩餘自回工作券數：" + work_recovory ;
+	
+	var showbox_05 = document.getElementById("showbox_05");
+	showbox_05.innerHTML = "平刷可得pt數："+ free_pt_total ;
+	
+	var showbox_06 = document.getElementById("showbox_06");
+	showbox_06.innerHTML = "總共能升："+ level_up + "級，最後等級：" + final_lv ;
+	
+	var showbox_07 = document.getElementById("showbox_07");
+	showbox_07.innerHTML = "前3首總共可獲得pt數："+ three_song_pt ;
+	
+	var showbox_08 = document.getElementById("showbox_08");
+	showbox_08.innerHTML = "第4首可獲得pt數："+ four_song_pt ;
+	
+	var showbox_09 = document.getElementById("showbox_09");
+	showbox_09.innerHTML = "達標還需再刷："+ need_day + "天，共" + days_need + "天" ;
+	
+	var showbox_10 = document.getElementById("showbox_10");
+	showbox_10.innerHTML = "達標還需bp數："+ need_bp ;
+	
+	var showbox_11 = document.getElementById("showbox_11");
+	showbox_11.innerHTML = "需耗鑽數："+ pay_dia ;
+	
+}
+
+</script>
+
+
+<body>
+<form name='form' id='form'>
+<div class = "card" >
+	<div class = "card-header">
+		活動類型：巡演
+	<br>
+	</div>
+	
+	<div class = "blocks" >
+	    
+	    為避免用到舊的數據，請先刷新(F5)再輸入<br>
+        *下拉到底有假設前提*<br>
+		<a href="https://aries9059.wordpress.com/2021/07/19/diamond_calc/">*輸入説明請點我*</a>
+	    
+		<div class = "setting-block" >
+			現在時間：
+			<br>
+			<script>
+				Today = new Date();
+				yy=Today.getFullYear();
+				mm=Today.getMonth()+1;
+				dd=Today.getDate();
+				hh=Today.getHours();
+				MM=Today.getMinutes();
+				document.write(yy+"年"+mm+"月"+dd+"日"+hh+"時"+MM+"分");
+			</script>
+		</div>
+	<br>
+		<div class = "setting-block" >
+			登入獎勵：
+			<select name="gift" id="gift" required>
+				<option value="">下拉選取</option>
+				<option value="27">27個哨子</option>
+				<option value="121">121個哨子</option>
+			</select>
+		</div>
+	<br>
+		<div class = "setting-block" >
+		結束時間：<br>(港台星馬)(UTC+8)
+		<input required type="datetime-local"  name="date_end" id="date_end" style=width:auto >
+		</div>
+	<br>
+		<div class = "setting-block" >
+		現在活動積分：
+		<input required type="number" name="pt_now" id="pt_now" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div>
+	<br>
+		<div class = "setting-block" >
+		目標積分：
+		<input required type="number" name="pt_target" id="pt_target" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div>
+	<br>	
+		<div class = "setting-block" >
+		第1-3首平均分數：<input required type="number" name="score_three" id="score_three" placeholder="點擊輸入" style=width:150px inputmode="numeric"> 
+		</div>
+	<br>
+		<div class = "setting-block" >
+		BP用量（第1-3首）：
+			<select name="bp_use_3" id="bp_use_3" required>
+				<option value="">下拉選取</option>
+				<option value="3">3BP</option>
+				<option value="6">6BP</option>
+				<option value="10">10BP</option>
+			</select>
+		</div>
+	<br>		
+		<div class = "setting-block" >
+		fever%：<input required type="number" name="fever" id="fever" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div >
+	
+		<div class = "setting-block" >
+		第4首分數：<input required type="number" name="score_four" id="score_four" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div>
+	<br>
+		<div class = "setting-block" >
+		BP用量（第4首）：
+			<select name="bp_use_4" id="bp_use_4" required>
+				<option value="">下拉選取</option>
+				<option value="3">3BP</option>
+				<option value="6">6BP</option>
+				<option value="10">10BP</option>
+			</select>
+		</div>
+	<br>
+		<div class = "setting-block" >
+		加成%：<input required type="number" name="add" id="add" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div >
+	<br>
+		<div class = "setting-block" >
+		目前玩家等級：<input required type="number" name="level_now" id="level_now" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div >
+	<br>
+		<div class = "setting-block" >
+		距離升級還需要：<input required type="number" name="exp_need" id="exp_need" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div>
+	<br>
+		<div class = "setting-block" >
+		目前bp數：<input required type="number" name="bp_now" id="bp_now" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div>
+	<br>
+		<div class = "setting-block" >
+		目前工作券數：<input required type="number" name="work_now" id="work_now" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div>
+	<br>
+		<div class = "setting-block" >
+		目前擴音器數量：<input required type="number" name="loudspeaker_now" id="loudspeaker_now" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div>
+	<br>
+		<div class = "setting-block" >
+		哨子數（禮包要<br>自己加；大月不用）：<input required type="number" name="whistle_now" id="whistle_now" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div >
+	<br>
+		<div class = "setting-block" >
+		翻倍券數（禮包要<br>自己加；大月不用）：<input required type="number" name="double_now" id="double_now" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div>
+	<br>
+		<div class = "setting-block" >
+		工作券上限：<select name="work_max" id="work_max" required>
+				<option value="">下拉選取</option>
+				<option value="3">3張</option>
+				<option value="5">5張</option>
+				<option value="8">8張</option>
+				<option value="10">10張</option>
+				<option value="11">11張</option>
+				
+			</select>
+		</div>
+	<br>
+		<div class = "setting-block" >
+		工作券回復時間：
+			<select name="work_time" id="work_time" required>
+				<option value="">下拉選取</option>
+				<option value="60">60分鐘</option>
+				<option value="56">56分鐘</option>
+				<option value="53">53分鐘</option>
+				<option value="50">50分鐘</option>
+				<option value="45">45分鐘</option>
+				<option value="43">43分鐘</option>
+			</select>
+		</div>
+	<br>
+		<div class = "setting-block" >
+		限定工作與否：
+			<select name="work_event" id="work_event" required>
+				<option value="">下拉選取</option>
+				<option value="1">限定工作</option>
+				<option value="0">日常工作</option>
+			</select>
+		</div>
+	<br>
+		<div class = "setting-block" >
+		每日因滿溢而&ensp;<br>浪費的BP數：<input required type="number" name="bp_waste" id="bp_waste" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div >
+	<br>
+		<div class = "setting-block" >
+		每日因滿溢而&ensp;<br>浪費工作券數：<input required type="number" name="work_waste" id="work_waste" placeholder="點擊輸入" style=width:150px inputmode="numeric">
+		</div>
+	<br>
+		<div class = "setting-block" >
+		能否完成3輪星光的活動曲：
+			<select name="stage_complete" id="stage_complete" required>
+				<option value="">下拉選取</option>
+				<option value="1">能每日完成</option>
+				<option value="0">無法每日完成</option>
+			</select>
+		</div >
+	<br>
+		<div class = "setting-block" >
+		有無氪大月卡：
+			<select name="month_big" id="month_big" required>
+				<option value="">下拉選取</option>
+				<option value="1">有氪</option>
+				<option value="0">沒有氪</option>
+			</select>
+		</div >
+	<br>
+		<div class = "setting-block" >
+		能否完成每日任務：
+			<select name="day_mission" id="day_mission" required>
+				<option value="">下拉選取</option>
+				<option value="1">能每日完成</option>
+				<option value="0">無法每日完成</option>
+			</select>
+		</div >
+	<br>
+		<div class = "setting-block" >
+		有無每日一付費抽卡：
+			<select name="day_draw" id="day_draw" required>
+				<option value="">下拉選取</option>
+				<option value="1">每日一付費抽</option>
+				<option value="0">無每日一付費抽</option>
+			</select>
+		</div >
+	<br>
+		<div class = "setting-block" >
+		活動企劃能力：
+			<select name="ability" id="ability" required>
+				<option value="">下拉選取</option>
+				<option value="0">還沒開能力</option>
+				<option value="3500">lv1~lv6(3000~4000)</option>
+				<option value="4500">lv7~lv11(4200~5000)</option>
+				<option value="5500">lv12~lv20(5200~6000)</option>
+			</select>
+		</div >
+	<br>
+	確認每格都有填到且正確再按計算鍵看結果 (●'◡'●)
+	</div>
+<br><br>
+
+
+	<input type='button' name='submit' value='計算' onclick='run_all();' class ="button"  />
+
+	<br><br>
+  
+	<div class = "card-header"  id ="showbox_01" >
+		輸入完結果將顯示在下方各橫行内
+	</div>
+  
+  
+	<div class = "blocks" >
+		<div class = "setting-block"  id ="showbox_02">
+		剩餘活動時間：
+		</div>
+		<br>
+		
+		<div class = "setting-block"  id ="showbox_03">
+		剩餘自回bp數：
+		</div>
+		<br>
+		
+		<div class = "setting-block"  id ="showbox_04">
+		剩餘自回工作券數：
+		</div>
+		<br>
+		
+		<div class = "setting-block"  id ="showbox_05">
+		平刷可得pt數：
+		</div>
+		<br>
+		
+		<div class = "setting-block"  id ="showbox_06">
+		總共升級：
+		</div>
+		<br>
+		
+		<div class = "setting-block"  id ="showbox_07">
+		前3首總共可獲得pt數：
+		</div>
+		<br>
+		
+		<div class = "setting-block"  id ="showbox_08">
+		第4首可獲得pt數：
+		</div>
+		<br>
+		
+		<div class = "setting-block"  id ="showbox_09">
+		達標還需再刷：
+		</div>
+		<br>
+		
+		<div class = "setting-block"  id ="showbox_10">
+		達標還需bp數：
+		</div>
+		<br>
+		
+		<div class = "setting-block"  id ="showbox_11">
+		需耗鑽數：
+		</div>
+		<br>
+		
+		
+	</div>
+  
+	<div class = "show-block"  >
+		
+			<span style="text-align:center">預設假設：</span>
+			0. 巡演耗鑽是高估的，實際可能會<br>
+			再少一些（500左右）。
+			1. 有bp會優先拿去打歌而非打工。<br>
+			2. 輸入的資源預計全部用完，不想<br>
+			用的話在該欄位填0或者預計要用的<br>
+			數量就好。<br>
+			3. 天數計算是以完成4首為前提，不<br>
+			計算只打1首就退出換別天的情況。
+			
+			
+	</div >
+<br>
+  
+</form>
+
+
+</body>
+</html>
