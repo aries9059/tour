@@ -634,7 +634,7 @@ function run_all(){
 	}
 	
 	var level_unused = 0;
-	var level_unsed_total = 0;
+	var level_unused_total = 0;
 	var final_lv = 0;
 	if (pt_now_t >= one_days_pt){
 		days_pass = Math.floor(pt_now_t / one_days_pt);
@@ -645,10 +645,10 @@ function run_all(){
 		for (level_unused = level_now_t; exp_unused >= exp_need_2; level_unused++){
 			exp_unused = exp_unused - exp_need_2;
 			exp_need_2 = level_unused*100+2500;
-			level_unsed_total = level_unsed_total + 1;
+			level_unused_total = level_unused_total + 1;
 		}
 		
-		final_lv = level_now_t + level_unsed_total;
+		final_lv = level_now_t + level_unused_total;
 	}else {
 		final_lv = level_now_t + level_up;
 	
@@ -656,7 +656,7 @@ function run_all(){
 	
 	/* free_pt for work(comfirm level up), double */
 	var work_max_t = Number(work_max);
-	free_work_pt = work_pt*(work_now_t + work_recovory + work_max_t * level_unsed_total);
+	free_work_pt = work_pt*(work_now_t + work_recovory + work_max_t * level_up);
 
 
 	/* free_pt for song */
@@ -668,7 +668,7 @@ function run_all(){
 	var loudspeaker_now_t = Number(loudspeaker_now);
 	var bp_transfer;
 	
-	free_bp = bp_now_t + bp_recovory + 10*level_unsed_total;
+	free_bp = bp_now_t + bp_recovory + 10*level_up;
 	free_whistle = whistle_now_t + whistle_gift + whitstle_pt + whistle_package + whitstle_draw + whistle_mission;
 	free_loudspeaker = loudspeaker_now_t + loudspeaker_pt;
 	bp_transfer = free_bp + free_whistle + 10*free_loudspeaker;
